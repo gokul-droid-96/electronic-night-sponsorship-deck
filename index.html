@@ -9,6 +9,9 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
                     colors: {
                         'dark-bg': '#100C1A', // Deeper, club-appropriate dark background
                         'neon-blue': '#00F0FF', // Brighter cyan/blue
@@ -18,6 +21,7 @@
                     boxShadow: {
                         'neon-pink': '0 0 10px #FF3399, 0 0 20px #FF3399',
                         'neon-blue': '0 0 10px #00F0FF, 0 0 20px #00F0FF',
+                        'neon-glow': '0 0 15px rgba(0, 240, 255, 0.4), 0 0 20px rgba(255, 51, 153, 0.4)',
                     }
                 }
             }
@@ -48,6 +52,14 @@
             border-right: 4px solid #00F0FF;
             box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
         }
+        .neon-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+        }
+        .neon-button:hover {
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.8), 0 0 5px #FF3399;
+            transform: translateY(-2px);
+        }
         
         /* Custom scrollbar for aesthetics */
         ::-webkit-scrollbar { width: 8px; }
@@ -59,6 +71,7 @@
 
     <div id="app" class="max-w-7xl mx-auto p-4 md:p-8">
 
+        <!-- Header -->
         <header class="text-center py-20 md:py-32 rounded-xl mb-16 relative overflow-hidden">
             <div class="absolute inset-0 z-0 opacity-20" style="
                 background-image: radial-gradient(circle at 10% 90%, #FF3399 0, transparent 30%), 
@@ -75,39 +88,43 @@
                 <p class="mt-6 text-xl text-white/80 font-medium">
                     WL Super Club Presents | Saturday, October 25th | Bengaluru
                 </p>
+                <!-- Call to action button added for immediate conversion -->
+                <a href="#contact" class="mt-8 inline-block px-8 py-3 font-bold bg-neon-blue text-dark-bg rounded-full uppercase tracking-wider neon-button">
+                    Partner With Us
+                </a>
             </div>
         </header>
 
         <div class="space-y-12">
 
-            <section class="grid lg:grid-cols-3 gap-8 items-center p-6 md:p-10 rounded-xl neon-card-pink">
-                <div class="lg:col-span-2">
-                    <h3 class="text-4xl font-extrabold text-neon-blue mb-4">EVENT OVERVIEW & FINANCIAL SUMMARY</h3>
-                    <p class="text-lg text-white/90 mb-6">
-                        A high-profile electronic music event featuring top national talent at a premier Bengaluru venue. Your partnership guarantees a world-class production experience.
-                    </p>
-                    
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        <div class="p-4 rounded-lg bg-dark-bg border border-electric-pink/50">
-                            <p class="text-xl font-bold text-electric-pink">TOTAL EVENT BUDGET</p>
-                            <p class="text-3xl font-black text-white">₹7,49,000</p>
-                            <p class="text-xs text-white/70 mt-1">Comprehensive investment for a premium experience.</p>
-                        </div>
-                        <div class="p-4 rounded-lg bg-dark-bg border border-neon-blue/50">
-                            <p class="text-xl font-bold text-neon-blue">SPONSORSHIP REQUIRED</p>
-                            <p class="text-3xl font-black text-white">₹1,22,000</p>
-                            <p class="text-xs text-white/70 mt-1">Critical investment for technical excellence and logistics.</p>
-                        </div>
+            <!-- EVENT OVERVIEW & FINANCIAL SUMMARY -->
+            <!-- Adjusted: Removed image column and made the content fill the section -->
+            <section id="overview" class="p-6 md:p-10 rounded-xl neon-card-pink">
+                <h3 class="text-4xl font-extrabold text-neon-blue mb-4">EVENT OVERVIEW & FINANCIAL SUMMARY</h3>
+                <p class="text-lg text-white/90 mb-6 max-w-4xl">
+                    A high-profile electronic music event featuring top national talent at a premier Bengaluru venue. Your partnership guarantees a world-class production experience.
+                </p>
+                
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl">
+                    <!-- Total Budget Card -->
+                    <div class="p-4 rounded-lg bg-dark-bg border border-electric-pink/50 col-span-2 md:col-span-1">
+                        <p class="text-xl font-bold text-electric-pink">TOTAL EVENT BUDGET</p>
+                        <p class="text-3xl font-black text-white">₹9,22,000</p>
+                        <p class="text-xs text-white/70 mt-1">Total estimated cost for a premium, seven-hour event.</p>
                     </div>
-                </div>
-                <div class="lg:col-span-1">
-                    <div id="image-1-container" class="w-full h-80 bg-gray-900 flex items-center justify-center rounded-xl shadow-xl overflow-hidden">
-                        <p class="text-white/60 animate-pulse text-neon-blue">Loading Crowd Vibe Image...</p>
+                    <!-- Sponsorship Required Card -->
+                    <div class="p-4 rounded-lg bg-dark-bg border border-neon-blue/50 col-span-2 md:col-span-1">
+                        <p class="text-xl font-bold text-neon-blue">SPONSORSHIP REQUIRED</p>
+                        <p class="text-3xl font-black text-white">₹1,22,000</p>
+                        <p class="text-xs text-white/70 mt-1">Critical investment for technical excellence and logistics.</p>
                     </div>
                 </div>
             </section>
 
+            <!-- ARTIST LINEUP & TECHNICAL RIDER -->
+            <!-- Layout kept as 2 columns for data balance -->
             <section class="grid lg:grid-cols-2 gap-8 items-start p-6 md:p-10 rounded-xl neon-card-blue">
+                <!-- Column 1: Lineup Table -->
                 <div>
                     <h3 class="text-4xl font-extrabold text-electric-pink mb-4">ARTIST LINEUP & SCHEDULE</h3>
                     <table class="min-w-full text-left rounded-lg overflow-hidden text-sm md:text-base">
@@ -119,34 +136,44 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-gray-800 border-b border-white/10"><td class="p-3 text-neon-blue">6:00 PM</td><td class="p-3">Opening DJ</td><td class="p-3 text-right">₹25,000</td></tr>
-                            <tr class="bg-gray-700 border-b border-white/10"><td class="p-3 text-neon-blue">7:00 PM</td><td class="p-3 font-medium">Aksomaniac (Electronic)</td><td class="p-3 text-right">₹1,50,000</td></tr>
-                            <tr class="bg-gray-800 border-b border-white/10"><td class="p-3 text-neon-blue">8:00 PM</td><td class="p-3 font-bold text-electric-pink">MRZ Gang (Thoppi) - Live Band</td><td class="p-3 text-right">₹1,50,000</td></tr>
-                            <tr class="bg-gray-700 border-b border-white/10"><td class="p-3 text-neon-blue">9:00 PM</td><td class="p-3 font-bold text-electric-pink">MVR Live (ARJN x KDS) - Headlining</td><td class="p-3 text-right">₹2,50,000</td></tr>
-                            <tr class="bg-gray-800"><td class="p-3 text-neon-blue">10:00 PM</td><td class="p-3">Closing Act (Bollywood DJ)</td><td class="p-3 text-right">₹25,000</td></tr>
+                            <tr class="bg-dark-bg/50 border-b border-white/10"><td class="p-3 text-neon-blue">6:00 PM</td><td class="p-3">Opening DJ</td><td class="p-3 text-right">₹25,000</td></tr>
+                            <tr class="bg-dark-bg/60 border-b border-white/10"><td class="p-3 text-neon-blue">7:00 PM</td><td class="p-3 font-medium">Aksomaniac (Electronic)</td><td class="p-3 text-right">₹1,50,000</td></tr>
+                            <tr class="bg-dark-bg/50 border-b border-white/10"><td class="p-3 text-neon-blue">8:00 PM</td><td class="p-3 font-bold text-electric-pink">MRZ Gang (Thoppi) - Live Band</td><td class="p-3 text-right">₹1,50,000</td></tr>
+                            <tr class="bg-dark-bg/60 border-b border-white/10"><td class="p-3 text-neon-blue">9:00 PM</td><td class="p-3 font-bold text-electric-pink">MVR Live (ARJN x KDS) - Headlining</td><td class="p-3 text-right">₹2,50,000</td></tr>
+                            <tr class="bg-dark-bg/50"><td class="p-3 text-neon-blue">10:00 PM</td><td class="p-3">Closing Act (Bollywood DJ)</td><td class="p-3 text-right">₹25,000</td></tr>
                             <tr class="bg-neon-blue/20"><td colspan="2" class="p-3 font-bold text-white">TOTAL TALENT FEE</td><td class="p-3 font-black text-white text-right">₹6,00,000</td></tr>
                         </tbody>
                     </table>
                 </div>
+                <!-- Column 2: Technical Rider -->
                 <div>
-                    <div id="image-2-container" class="w-full h-64 md:h-full bg-gray-900 flex items-center justify-center rounded-xl shadow-xl overflow-hidden mb-6">
-                        <p class="text-white/60 animate-pulse text-electric-pink">Loading Artist Stage Image...</p>
-                    </div>
-                    <h4 class="text-2xl font-extrabold text-neon-blue mb-2">TECHNICAL RIDER (₹66,000)</h4>
-                    <ul class="list-disc list-inside space-y-1 text-white/90 ml-4">
+                    <h4 class="text-4xl font-extrabold text-neon-blue mb-4 lg:mt-0 mt-8">TECHNICAL RIDER & LOGISTICS</h4>
+                    <p class="text-lg text-electric-pink font-semibold mb-4">Ensuring premium audio/visual quality and artist comfort.</p>
+                    
+                    <h4 class="text-2xl font-extrabold text-white mb-2">Technical Equipment (₹66,000)</h4>
+                    <ul class="list-disc list-inside space-y-1 text-white/90 ml-4 mb-6">
                         <li><span class="font-bold text-electric-pink">DJ Console:</span> 2x Pioneer CDJ-3000 & 1x DJM Mixer (NXS2/A9).</li>
                         <li><span class="font-bold text-electric-pink">Microphones:</span> 2x Shure SM58 / Sennheiser e835 wireless (Primary & Backup).</li>
                         <li><span class="font-bold text-electric-pink">Monitoring:</span> Min. 4 floor monitors (JBL SRX815P/Yamaha DBR10).</li>
                         <li><span class="font-bold text-electric-pink">IEMs:</span> Min. 2 Shure PSM900 / Sennheiser EW systems.</li>
                     </ul>
+
+                    <h4 class="text-2xl font-extrabold text-white mb-2">Artist Logistics (₹2,56,000)</h4>
+                    <ul class="list-disc list-inside space-y-1 text-white/90 ml-4">
+                        <li><span class="font-bold text-electric-pink">Travel:</span> Two-way air travel for 4 main artists (₹28,000).</li>
+                        <li><span class="font-bold text-electric-pink">Accommodation & Food:</span> Hotel and per diem for 4 main artists (₹20,000).</li>
+                        <li><span class="font-bold text-electric-pink">Private Security:</span> Personal bouncers/security for the 8-person MRZ/Thoppi crew (₹8,000).</li>
+                    </ul>
                 </div>
             </section>
             
-            <section class="p-6 md:p-10 rounded-xl neon-card">
+            <!-- SPONSORSHIP TIERS -->
+            <section id="packages" class="p-6 md:p-10 rounded-xl neon-card">
                 <h3 class="text-4xl font-black text-electric-pink mb-8 text-center">STRATEGIC SPONSORSHIP TIERS</h3>
                 
                 <div class="grid lg:grid-cols-3 gap-8">
 
+                    <!-- PLATINUM TIER -->
                     <div id="tier-platinum" class="p-6 rounded-xl border-4 border-electric-pink shadow-neon-pink hover:scale-[1.02] transition duration-300 bg-dark-bg/50 relative group">
                         <h4 class="text-3xl font-black text-electric-pink mb-4 border-b pb-2 border-electric-pink/50">PLATINUM (35% Cost)</h4>
                         <p class="font-bold text-lg text-neon-blue mb-4">Exclusive high-visibility branding and direct artist engagement.</p>
@@ -159,6 +186,7 @@
                         </ul>
                     </div>
                     
+                    <!-- GOLD TIER -->
                     <div id="tier-gold" class="p-6 rounded-xl border-4 border-neon-blue shadow-neon-blue hover:scale-[1.02] transition duration-300 bg-dark-bg/50 relative group">
                         <h4 class="text-3xl font-black text-neon-blue mb-4 border-b pb-2 border-neon-blue/50">GOLD (25% Cost)</h4>
                         <p class="font-bold text-lg text-electric-pink mb-4">Excellent visibility at event entrance and broad print reach.</p>
@@ -171,6 +199,7 @@
                         </ul>
                     </div>
 
+                    <!-- STANDARD TIER -->
                     <div id="tier-standard" class="p-6 rounded-xl border-2 border-white/30 hover:scale-[1.02] transition duration-300 bg-dark-bg/50 relative group">
                         <h4 class="text-3xl font-black text-white mb-4 border-b pb-2 border-white/20">STANDARD (15% Cost)</h4>
                         <p class="font-bold text-lg text-neon-blue mb-4">Cost-effective package for essential brand presence.</p>
@@ -183,40 +212,65 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- Common Benefits Bar -->
+                <div class="mt-12 p-6 rounded-xl bg-neon-blue/10 border border-neon-blue/30 text-center">
+                    <p class="font-bold text-xl text-neon-blue mb-2">COMMON SPONSOR BENEFITS (ALL TIERS)</p>
+                    <p class="text-white/80">
+                        All sponsors receive <span class="font-bold text-electric-pink">Social Media Shout-outs</span> and permanent <span class="font-bold text-electric-pink">Website Presence</span> with a backlink on the official event page.
+                    </p>
+                </div>
             </section>
             
-            <section class="grid lg:grid-cols-2 gap-8 items-center p-6 md:p-10 rounded-xl neon-card-pink">
-                <div class="lg:order-2">
-                    <h3 class="text-4xl font-extrabold text-neon-blue mb-4">TARGETED DEMOGRAPHICS</h3>
-                    <p class="text-lg text-electric-pink font-semibold mb-4">Align with high-quality electronic music and premium nightlife experiences.</p>
-                    <ul class="list-disc list-inside space-y-2 text-white/90 ml-4">
-                        <li><span class="font-bold text-electric-pink">Brand Visibility:</span> Premium logo placement across all event materials, social media campaigns, and venue branding.</li>
-                        <li><span class="font-bold text-electric-pink">Targeted Access:</span> Direct access to <span class="font-bold">21-35 age group</span> with high disposable income and lifestyle spending.</li>
-                        <li><span class="font-bold text-electric-pink">Networking Platform:</span> VIP access for client entertainment and relationship-building opportunities.</li>
-                    </ul>
-                    
-                    <div class="mt-8 text-center">
-                        <p class="text-4xl font-black text-electric-pink tracking-tighter mb-4">
-                            READY TO PARTNER?
-                        </p>
-                        <p class="text-xl text-neon-blue font-semibold">
-                            Secure your sponsorship for Electronic Night today.
-                        </p>
-                    </div>
-                </div>
-                <div class="lg:order-1">
-                    <div id="image-3-container" class="w-full h-80 bg-gray-900 flex items-center justify-center rounded-xl shadow-xl overflow-hidden">
-                        <p class="text-white/60 animate-pulse text-electric-pink">Loading Strategic Benefits Image...</p>
-                    </div>
+            <!-- TARGETED DEMOGRAPHICS & FINAL CTA -->
+            <!-- Adjusted: Removed image column and made the content fill the section -->
+            <section class="p-6 md:p-10 rounded-xl neon-card-pink">
+                <h3 class="text-4xl font-extrabold text-neon-blue mb-4">TARGETED DEMOGRAPHICS & ROI</h3>
+                <p class="text-lg text-electric-pink font-semibold mb-4">Align with high-quality electronic music and premium nightlife experiences.</p>
+                <ul class="list-disc list-inside space-y-2 text-white/90 ml-4 max-w-4xl">
+                    <li><span class="font-bold text-electric-pink">Brand Visibility:</span> Premium logo placement across all event materials, social media campaigns, and venue branding.</li>
+                    <li><span class="font-bold text-electric-pink">Targeted Access:</span> Direct access to <span class="font-bold">21-35 age group</span> with high disposable income and lifestyle spending.</li>
+                    <li><span class="font-bold text-electric-pink">Networking Platform:</span> VIP access for client entertainment and relationship-building opportunities.</li>
+                    <li><span class="font-bold text-electric-pink">Digital Reach:</span> Campaigns target over 20,000 potential attendees across Bengaluru nightlife circles.</li>
+                </ul>
+
+                <div class="mt-10 text-center">
+                    <p class="text-4xl font-black text-electric-pink tracking-tighter mb-4">
+                        READY TO PARTNER?
+                    </p>
+                    <p class="text-xl text-neon-blue font-semibold">
+                        Secure your sponsorship for Electronic Night today.
+                    </p>
                 </div>
             </section>
 
+            <!-- CONTACT SECTION / FINAL CALL TO ACTION -->
+            <section id="contact" class="py-12 bg-dark-bg/70 rounded-xl shadow-2xl border-2 border-neon-blue/50 text-center">
+                <h3 class="text-5xl font-black text-electric-pink mb-4 tracking-tight">
+                    LET'S AMPLIFY TOGETHER.
+                </h3>
+                <p class="text-xl text-neon-blue font-semibold mb-8">
+                    Discuss a customized tier or lock in your exclusive partnership.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="mailto:contact@event.com" class="px-10 py-4 font-black bg-neon-blue text-dark-bg rounded-full uppercase tracking-wider neon-button text-lg">
+                        📧 Contact via Email
+                    </a>
+                    <a href="tel:+911234567890" class="px-10 py-4 font-black bg-electric-pink/80 hover:bg-electric-pink rounded-full text-white uppercase tracking-wider transition text-lg">
+                        📞 Call Us Now
+                    </a>
+                </div>
+                <div class="mt-6 text-white/70">
+                    <p class="text-sm">WL Super Club, Bengaluru.</p>
+                </div>
+            </section>
         </div>
     </div>
 
-    <script>
-        // --- PRE-GENERATED BASE64 IMAGES FOR FAST/RELIABLE DISPLAY ---
-        // These are example Base64 strings. In a real scenario, you would replace these
-        // with actual Base64 outputs from an AI image generator for specific prompts.
-        const base64Images = {
-            'image-1-container': `iVBORw0KGgoAAAANSUhEUgAAAoAAAAKAAQMAAACU40YyAAAABlBMVEX///8AAABVwt/RAAAACXBIWXMAAA7EAAAOxAGVKw4bAAADNUlEQVR4nO3cTY7bQAwG4P13791xN2p3/v/f65Gk675pA5hAEh/2i2Q9l+sH+L66XgD/E8iXz8e5w/fPq0eE/B6oH+D7w2Lw/r9v8v7r8yE/F6oH+L7QJ//87P1n1/B9Pz4T83ugfoDvr43eD/d2fHfQ/f1/M+b3AP234zL3n1vD9/z4TMyvgfoBvt9Xz8f7fXn+G+fP/3fM/F9IvgfoBfQ+2Xz+H/s/Lw7+ZfS+A+g1g1y+G+dP/+fgvof4/1cM/Mvo/R9/JvQ99vO47683+33n/h/j/R+F/h/j/u+J+r/n/j/h/m+E+m+C+2+C+1+C+2+C+2+C+2+C+1+C+2+C+2+C+2+C+1+C+2+C+2+C+2+C+1+C+2+C+2+C+2+C+2+C+1+C+2+C+2+C+2+C+1+C+2+C+2+C+1+C+2+C+2+C+2+C+1+C+2+C+2+C+2+C+1+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2+C+2
+    <!-- Footer -->
+    <footer class="mt-8 py-4 text-center text-xs text-white/50 border-t border-white/10">
+        &copy; 2025 WL Super Club. All rights reserved. Sponsorship Deck for Electronic Night.
+    </footer>
+
+</body>
+</html>
